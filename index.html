@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UConn GD4</title>
+    <script src="js/p5.min.js"></script>
+    <script src="js/uconn.js"></script>
+    <style>
+    @font-face{
+        font-family: spot_mono;
+        src: url(fonts/spot_mono_light.woff);
+    }
+    body,html {
+        padding: 0;
+        margin: 0;
+        color: rgba(20,20,20,1);
+        font-family: "spot_mono";
+        -moz-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        color:#555;
+    }
+
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      margin:0;
+      padding:1em;
+      gap: 1em;
+    }
+
+    li {
+      height: 40vh;
+      //height: 44vh;
+      flex-grow: 1;
+      list-style-type:none;
+    }
+
+    img {
+      max-height: 100%;
+      min-width: 100%;
+      object-fit: cover;
+      vertical-align: bottom;
+    }
+
+    #popup {
+        position: fixed;
+        left:0;
+        top:0;
+        width:100%;
+        height:100%;
+        background-color: rgba(255,255,255,0.97);
+        display:none;
+        padding-top: 1em;
+        // needs work
+        transition-property: display;
+        transition-duration: 4s;
+        transition-delay: 2s;
+        z-index: 1;
+        overflow:auto;
+        background-color: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0.97)));
+    }
+
+    #about{
+        width: 1000px;
+        margin: auto;
+        padding-bottom: 5em;
+
+    }
+
+    #close{
+        position: fixed;
+        right:1.5em;
+        top:1em;
+        font-size:2em;
+    }
+
+    #embed{
+        width: 1000px;
+        height: 1042px;
+        display:block;
+        margin: auto;
+    }
+
+    // Portrait
+
+    @media (max-aspect-ratio: 1/1) {
+      li {
+        height: 30vh;
+      }
+      ul{
+          padding:0;
+      }
+    }
+
+    // Short screens
+
+    @media (max-height: 480px) {
+      ul {
+        flex-direction: row;
+        padding:0;
+      }
+      li {
+        height: 80vh;
+      }
+    }
+
+    // Smaller screens in portrait
+
+    @media (max-aspect-ratio: 1/1) and (max-width: 480px) {
+      ul {
+        flex-direction: row;
+        padding:0;
+      }
+      li {
+        height: auto;
+        width: 100%;
+      }
+      img {
+        width: 100%;
+        max-height: 75vh;
+        min-width: 0;
+      }
+    }
+    </style>
+
+</head>
+
+<body>
+    <main>
+        <ul id="students">
+        </ul>
+        <div id="popup">
+            <div id="close">&#x2715</div>
+            <iframe id="embed" src=""></iframe> 
+            <div id="about">
+                <h1 id="name"></h1>
+                <h2 id="title"></h2>
+                <p id="info"></p>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
